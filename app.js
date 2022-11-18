@@ -8,9 +8,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-const Router = require('./src/Route/userRoute/userRoute')
+//import router
+const userRouter = require('./src/Route/user/userRoute');
+const merchantRouter = require('./src/Route/merchant/merchantRoute');
+const categoryRouter = require('./src/Route/category/categoryRoutes');
 
-app.use('/api/v1',Router)
+//use routes
+app.use('/api/v1',userRouter);
+app.use('/api/v1',merchantRouter);
+app.use('/api/v1',categoryRouter);
 
 //Database connect
 connectDatabase();
